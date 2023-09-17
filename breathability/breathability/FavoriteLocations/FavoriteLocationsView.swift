@@ -9,25 +9,32 @@ import SwiftUI
 
 struct FavoriteLocationsView: View {
     @State private var favCityList: [String] = []
-    let userDefaultsKey = "favCitiesList"
-    
-    var body: some View {
-        List(favCityList, id: \.self) { city in
-            NavigationLink(destination: FavoriteLocationDetailsView(locationName: city)) {
-                Text(city)
-            }
-        }
-        .onAppear {
-            if let storedList = UserDefaults.standard.stringArray(forKey: userDefaultsKey) {
-                favCityList = storedList
-            }
-        }
-        .navigationTitle("Favorites")
-    }
-}
+    @State private var searchText = ""
+    let userDefaultsKey = "favoriteCitiesList"
 
-struct FavoriteLocationsView_Previews: PreviewProvider {
-    static var previews: some View {
-        FavoriteLocationsView()
+    var filteredCities: [String] {
+        if searchText.isEmpty {
+            return favCityList
+        } else {
+            return favCityList.filter { $0.localizedCaseInsensitiveContains(searchText) }
+        }
+    }
+
+    var body: some View {
+        VStack {
+            SearchBar(searchText: $searchText)
+
+            List(filteredCities, id: \.self) { city in
+                NavigationLink(destination: FavoriteLocationDetailsView(locationName: city)) {
+                    Text(city)
+                }
+            }
+            .onAppear {
+                if let storedList = UserDefaults.standard.stringArray(forKey: userDefaultsKey) {
+                    favCityList = storedList
+                }
+            }
+            .navigationTitle("Favorites")
+        }
     }
 }

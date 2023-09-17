@@ -19,10 +19,11 @@
 		D17FC19E2AB3994D00A42442 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17FC19D2AB3994D00A42442 /* SearchView.swift */; };
 		D17FC1AC2AB3B68E00A42442 /* AQIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17FC1AB2AB3B68E00A42442 /* AQIModel.swift */; };
 		D17FC1AE2AB3B88C00A42442 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17FC1AD2AB3B88C00A42442 /* LocationManager.swift */; };
-		D17FC1B02AB3B8C800A42442 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17FC1AF2AB3B8C800A42442 /* Location.swift */; };
 		D1DC588E2AB5188A00320559 /* FavoriteLocationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DC588D2AB5188A00320559 /* FavoriteLocationsManager.swift */; };
 		D1DC58902AB51B3300320559 /* FavoriteLocationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DC588F2AB51B3300320559 /* FavoriteLocationsView.swift */; };
 		D1DC58942AB5F02400320559 /* FavoriteLocationDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DC58932AB5F02400320559 /* FavoriteLocationDetailsView.swift */; };
+		D1DC58992AB7507500320559 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DC58982AB7507500320559 /* LocationModel.swift */; };
+		D1DC589B2AB7533500320559 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DC589A2AB7533500320559 /* SearchBarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,10 +59,11 @@
 		D17FC19D2AB3994D00A42442 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		D17FC1AB2AB3B68E00A42442 /* AQIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AQIModel.swift; sourceTree = "<group>"; };
 		D17FC1AD2AB3B88C00A42442 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
-		D17FC1AF2AB3B8C800A42442 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		D1DC588D2AB5188A00320559 /* FavoriteLocationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteLocationsManager.swift; sourceTree = "<group>"; };
 		D1DC588F2AB51B3300320559 /* FavoriteLocationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteLocationsView.swift; sourceTree = "<group>"; };
 		D1DC58932AB5F02400320559 /* FavoriteLocationDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteLocationDetailsView.swift; sourceTree = "<group>"; };
+		D1DC58982AB7507500320559 /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
+		D1DC589A2AB7533500320559 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 				D1DC58972AB6001600320559 /* FavoriteLocationDetails */,
 				D17FC1A82AB3A48800A42442 /* Models */,
 				D17FC1942AB398AF00A42442 /* Search */,
+				D1DC589A2AB7533500320559 /* SearchBarView.swift */,
 				D17FC1692AB37A8F00A42442 /* Assets.xcassets */,
 				D17FC16B2AB37A8F00A42442 /* Preview Content */,
 			);
@@ -164,7 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				D17FC1AB2AB3B68E00A42442 /* AQIModel.swift */,
-				D17FC1AF2AB3B8C800A42442 /* Location.swift */,
+				D1DC58982AB7507500320559 /* LocationModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -320,11 +323,12 @@
 				D1DC58942AB5F02400320559 /* FavoriteLocationDetailsView.swift in Sources */,
 				D17FC1AE2AB3B88C00A42442 /* LocationManager.swift in Sources */,
 				D17FC1682AB37A8E00A42442 /* ContentView.swift in Sources */,
+				D1DC589B2AB7533500320559 /* SearchBarView.swift in Sources */,
+				D1DC58992AB7507500320559 /* LocationModel.swift in Sources */,
 				D17FC19E2AB3994D00A42442 /* SearchView.swift in Sources */,
 				D17FC19A2AB398F800A42442 /* SearchService.swift in Sources */,
 				D17FC1662AB37A8E00A42442 /* breathabilityApp.swift in Sources */,
 				D1DC588E2AB5188A00320559 /* FavoriteLocationsManager.swift in Sources */,
-				D17FC1B02AB3B8C800A42442 /* Location.swift in Sources */,
 				D17FC1AC2AB3B68E00A42442 /* AQIModel.swift in Sources */,
 				D1DC58902AB51B3300320559 /* FavoriteLocationsView.swift in Sources */,
 			);

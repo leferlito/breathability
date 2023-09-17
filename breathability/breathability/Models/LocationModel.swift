@@ -1,13 +1,13 @@
 //
-//  Location.swift
+//  LocationModel.swift
 //  breathability
 //
-//  Created by Lauren Ferlito on 9/14/23.
+//  Created by Lauren Ferlito on 9/17/23.
 //
 
 import Foundation
 
-struct Location {
+struct LocationModel {
     let latitude: Double
     let longitude: Double
 }

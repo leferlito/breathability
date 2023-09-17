@@ -13,13 +13,11 @@ struct SearchService {
     public func search(latitude: Double?, longitude: Double?) async throws -> AQIModel {
         // Don't want lat and lon to be optional
         guard let latitude = latitude, let longitude = longitude else {
-            throw fatalError("Invalid URL, lat or long is nil")
+            fatalError("Invalid URL, lat or long is nil")
         }
-        var components = URLComponents(string: "https://api.airvisual.com/v2/nearest_city?lat=\(latitude)&lon=\(longitude)&key=4f1ae6ab-1975-4949-87b6-158379adc7b9")
+        let components = URLComponents(string: "https://api.airvisual.com/v2/nearest_city?lat=\(latitude)&lon=\(longitude)&key=4f1ae6ab-1975-4949-87b6-158379adc7b9")
 
         guard let url = components?.url else { fatalError("Invalid URL") }
-        
-        // debug code
         print(url)
 
         let (data, _) = try await session.data(from: url) // Extract the data component

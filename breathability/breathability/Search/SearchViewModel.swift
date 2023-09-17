@@ -46,7 +46,7 @@ class SearchViewModel: ObservableObject {
 }
 
 extension SearchViewModel: LocationManagerDelegate {
-    func locationManager(_ manager: LocationManager, didUpdateLocation location: Location) {
+    func locationManager(_ manager: LocationManager, didUpdateLocation location: LocationModel) {
         search(latitude: location.latitude, longitude: location.longitude)
     }
     

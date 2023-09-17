@@ -12,11 +12,11 @@ import Combine
 // MARK: LocationManagerDelegate
 
 protocol LocationManagerDelegate: AnyObject {
-    func locationManager(_ manager: LocationManager, didUpdateLocation location: Location)
+    func locationManager(_ manager: LocationManager, didUpdateLocation location: LocationModel)
     func locationManager(_ manager: LocationManager, didFailError error: Error)
 }
 
-// MARK: LocationManager
+// MARK: LocationManager - contains logic to find current location
 
 class LocationManager: NSObject {
     private let locationManager = CLLocationManager()
@@ -25,7 +25,7 @@ class LocationManager: NSObject {
     // Note: Captures a weak reference to the object to avoid a retain cycle:
     weak var delegate: LocationManagerDelegate?
     
-    private var locationPublisher = PassthroughSubject<Location, Never>()
+    private var locationPublisher = PassthroughSubject<LocationModel, Never>()
     private var subscriber: AnyCancellable?
     
     override init() {
@@ -75,7 +75,7 @@ extension LocationManager: CLLocationManagerDelegate {
     ///   most reliable/recent: https://developer.apple.com/documentation/corelocation/cllocationmanagerdelegate/1423615-locationmanager
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let clLocation = locations.last else { return }
-        let location = Location(latitude: clLocation.coordinate.latitude, longitude: clLocation.coordinate.longitude)
+        let location = LocationModel(latitude: clLocation.coordinate.latitude, longitude: clLocation.coordinate.longitude)
 
         locationPublisher.send(location)
         locationManager.stopUpdatingLocation()

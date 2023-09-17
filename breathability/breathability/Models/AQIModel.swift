@@ -16,11 +16,11 @@ struct AQIData: Codable {
     let city: String
     let state: String
     let country: String
-    let location: Location2
+    let location: Location
     let current: Current
 }
 
-struct Location2: Codable {
+struct Location: Codable {
     let type: String
     let coordinates: [Double]
 }
