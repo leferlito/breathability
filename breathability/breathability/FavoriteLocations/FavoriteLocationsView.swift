@@ -10,7 +10,7 @@ import SwiftUI
 struct FavoriteLocationsView: View {
     @State private var favCityList: [String] = []
     @State private var searchText = ""
-    let userDefaultsKey = "favoriteCitiesList"
+    let userDefaultsKey = "favorites"
 
     var filteredCities: [String] {
         if searchText.isEmpty {

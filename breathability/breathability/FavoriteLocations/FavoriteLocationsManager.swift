@@ -9,7 +9,7 @@ import Foundation
 
 class FavoriteLocationsManager: ObservableObject {
     private let userDefaults = UserDefaults.standard
-    let userDefaultsKey = "favoriteCitiesList"
+    let userDefaultsKey = "favorites"
   
     func addFavorite(cityName: String, coordinates: [Double]) {
         // add coordinates to corresponding key city
