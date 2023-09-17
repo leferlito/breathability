@@ -11,9 +11,3 @@ struct Location {
     let latitude: Double
     let longitude: Double
 }
-
-extension Location: CustomStringConvertible {
-    var description: String {
-        return "Latitude: \(latitude), Longitude: \(longitude)"
-    }
-}

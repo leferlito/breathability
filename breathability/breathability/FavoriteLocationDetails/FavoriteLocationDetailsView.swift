@@ -11,44 +11,42 @@ struct FavoriteLocationDetailsView: View {
     @StateObject private var favLocationsManager = FavoriteLocationsManager()
     @StateObject private var searchVM = SearchViewModel()
     let locationName: String
-
+    
     init(locationName: String) {
         self.locationName = locationName
     }
 
     var body: some View {
         VStack {
-            Text("Location Name: \(locationName)")
-            let coordinates = favLocationsManager.getCoordinates(cityName: locationName)
-
-            if !coordinates.isEmpty {
-                let coordinatesString = coordinates.map { String($0) }.joined(separator: ", ")
-                Text("Coordinates: \(coordinatesString)")
-            } else {
-                // Handle the case where coordinates couldn't be retrieved or converted
-                Text("Coordinates not available")
-            }
-            Button("Find the AQI for \(locationName)") { searchVM.search(latitude: coordinates[1], longitude: coordinates[0])
-            }
             switch searchVM.state {
             case .idle:
-                Text("Please click the button above to make a aqi request")
+                Text("")
             case .loading:
                 ProgressView()
             case .success(let aqimodel):
-                Text("\(aqimodel.data.city), \(aqimodel.data.state), \(aqimodel.data.country)")
-                Text("Pollution = \(aqimodel.data.current.pollution.aqius) AQI")
-                Text("Weather = \(aqimodel.data.current.weather.tp)•C")
+                VStack(alignment: .center) {
+                    Text("Air Quality Index = \(aqimodel.data.current.pollution.aqius)")
+                        .font(.title3)
+                    Text("\(aqimodel.data.city), \(aqimodel.data.state), \(aqimodel.data.country)")
+                        .padding(.bottom, 2)
+                    let safety = searchVM.airQualityAssessment(aqi: aqimodel.data.current.pollution.aqius)
+                    let icon = searchVM.iconSelection(aqi: aqimodel.data.current.pollution.aqius)
+                    let color = searchVM.colorSelection(aqi: aqimodel.data.current.pollution.aqius)
+                    Image(systemName: icon)
+                        .foregroundColor(color)
+                        .font(.system(size: 30))
+                        .padding(.bottom, 2)
+                    Text(safety)
+                        .multilineTextAlignment(.center)
+                } .padding()
+                    .padding(.bottom, 150)
             case .error(let error):
                 Text(error)
                 
             }
+        } .onAppear {
+            let coordinates = favLocationsManager.getCoordinates(cityName: locationName)
+            searchVM.search(latitude: coordinates[1], longitude: coordinates[0])
         }
     }
 }
-
-//struct FavoriteLocationDetailsView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        FavoriteLocationDetailsView()
-//    }
-//}
